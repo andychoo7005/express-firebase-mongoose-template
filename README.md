@@ -1,6 +1,13 @@
 This is a template for server.  
 This template is in javascript.
 
+features inside:
+1. register/ login
+2. forgot password
+3. update profile
+4. send email - default is mailgun (different email providers need to be customized otherwise)
+5. ready ejs modules
+
 MUST INSTALL DEPENDENCIES
 ```
 1. express

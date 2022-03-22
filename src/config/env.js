@@ -9,6 +9,7 @@ let databaseUsername = '';
 let databasePassword = '';
 let hostingUrl = '';
 let firebase = {};
+let mailgun = {}
 
 if (process.env.NODE_ENV === 'production') {
 // production info
@@ -23,6 +24,10 @@ if (process.env.NODE_ENV === 'production') {
       credentials_filepath: path.resolve(process.env.FIREBASE_ADMIN_CREDENTIALS_FILENAME),
     },
   };
+  mailgun = {
+    domain:process.env.DOMAIN,
+    apikey:process.env.MAILGUN_API_KEY
+  }
 }
 
 module.exports = {
@@ -33,4 +38,5 @@ module.exports = {
   databasePassword,
   hostingUrl,
   firebase,
+  mailgun
 };

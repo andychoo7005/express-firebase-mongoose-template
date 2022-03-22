@@ -1,9 +1,11 @@
 const mailgun = require('mailgun-js');
 const ejs = require('ejs');
 
-const DOMAIN = 'sandbox07f06d98f013460882e4c3a32490cb6d.mailgun.org';
+const env = require('#config/env')
 
-const mg = mailgun({ apiKey: 'bffc64c3f3af5734624773a441a64957-0677517f-1dba7aa2', domain: DOMAIN });
+const DOMAIN = env.mailgun.domain;
+
+const mg = mailgun({ apiKey: env.mailgun.apiKey, domain: DOMAIN });
 
 exports.mailgun = async (to, subject, html, options = {}) => {
   await mg.messages().send({
