@@ -6,7 +6,7 @@ features inside:
 2. forgot password
 3. update profile
 4. send email - default is mailgun (different email providers need to be customized otherwise)
-5. ready ejs modules
+5. ready ejs templates for email
 
 MUST INSTALL DEPENDENCIES
 ```
