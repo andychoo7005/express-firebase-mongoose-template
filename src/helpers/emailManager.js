@@ -5,7 +5,7 @@ const env = require('#config/env')
 
 const DOMAIN = env.mailgun.domain;
 
-const mg = mailgun({ apiKey: env.mailgun.apiKey, domain: DOMAIN });
+const mg = mailgun({ apiKey: env.mailgun.apikey, domain: DOMAIN });
 
 exports.mailgun = async (to, subject, html, options = {}) => {
   await mg.messages().send({
