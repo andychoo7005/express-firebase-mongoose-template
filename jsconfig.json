@@ -1,0 +1,21 @@
+{
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "#config/*":["./src/config/*.js"],
+      "#controllers/*":["./src/controllers/*.js"],
+      "#dtos/*":["./src/dtos/*.js"],
+      "#helpers/*":["./src/helpers/*.js"],
+      "#loaders/*":["./src/loaders/*.js"],
+      "#middlewares/*":["./src/middlewares/*.js"],
+      "#models/*":["./src/models/*.js"],
+      "#services/*":["./src/services/*.js"],
+      "#utils/*":["./src/utils/*.js"],
+      "#resources/*":["./src/resources/*"]
+    }
+  }
+}

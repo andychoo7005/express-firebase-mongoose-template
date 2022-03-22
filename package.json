@@ -1,0 +1,43 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "firebase-admin": "^10.0.2",
+    "helmet": "^5.0.2",
+    "joi": "^17.6.0",
+    "lodash": "^4.17.21",
+    "mailgun-js": "^0.22.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.7",
+    "mongoose-unique-validator": "^3.0.0",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "imports": {
+    "#config/*": "./src/config/*.js",
+    "#controllers/*": "./src/controllers/*.js",
+    "#dtos/*": "./src/dtos/*.js",
+    "#helpers/*": "./src/helpers/*.js",
+    "#loaders/*": "./src/loaders/*.js",
+    "#middlewares/*": "./src/middlewares/*.js",
+    "#models/*": "./src/models/*.js",
+    "#services/*": "./src/services/*.js",
+    "#utils/*": "./src/utils/*.js",
+    "#resources/*": "./src/resources/*"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^2.0.15"
+  }
+}
