@@ -1,5 +1,4 @@
 This is a template for server.  
-
 This template is in javascript.
 
 MUST INSTALL DEPENDENCIES
