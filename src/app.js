@@ -36,7 +36,7 @@ const expressFunction = (customAPIs) => {
 
   // Routes init
   app.use('/api', routes);
-  app.use('/api',customAPIs)
+  app.use('/api', customAPIs);
 
   // error handler
   app.use(errorHandler);
@@ -50,5 +50,5 @@ const expressFunction = (customAPIs) => {
     console.log(err);
     process.exit(1);
   });
-}
-module.exports = expressFunction
+};
+module.exports = expressFunction;
