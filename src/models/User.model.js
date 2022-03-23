@@ -44,12 +44,12 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    unique: true,
+    required: true,
   },
   phoneNumber: {
     type: String,
     required: true,
-    unique: true,
+    unique: [true, 'Phone number must be unique'],
   },
   address: {
     type: AddressSchema,

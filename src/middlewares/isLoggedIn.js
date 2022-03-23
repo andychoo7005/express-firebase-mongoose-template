@@ -1,9 +1,9 @@
 const _ = require('lodash');
 const moment = require('moment');
 const { auth, rtdb } = require('#helpers/firebase');
-const User = require('#models/user-model');
+const User = require('#models/User.model');
 const responses = require('#helpers/responses');
-const projections = require('#helpers/projections');
+// const projections = require('#helpers/projections');
 
 const getSession = async (userId, lastActiveTime) => {
   const userLastActiveTime = await rtdb.ref(`/session/${userId}`).get({
@@ -70,7 +70,9 @@ const isLoggedIn = async (req, res, next) => {
 
     req.user = await User.findOne({
       uid: req.uid,
-    }, projections.userProjection);
+    },
+      // projections.userProjection
+    );
 
     if (!req.user) {
       return res.status(401).send(
