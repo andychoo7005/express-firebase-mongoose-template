@@ -24,5 +24,5 @@ exports.updateProfile = Joi.object({
 
 exports.getProfile = Joi.object({
   // uid here refers to the firebase uid.
-  uid: Joi.string().required(),
+  // uid: Joi.string().required(),
 });

@@ -1,47 +1,47 @@
 const _ = require('lodash');
 const moment = require('moment');
-const { auth, rtdb } = require('#helpers/firebase');
+const { auth } = require('#helpers/firebase');
 const User = require('#models/User.model');
 const responses = require('#helpers/responses');
 // const projections = require('#helpers/projections');
 
-const getSession = async (userId, lastActiveTime) => {
-  const userLastActiveTime = await rtdb.ref(`/session/${userId}`).get({
-    lastActiveTime,
-  });
+// const getSession = async (userId, lastActiveTime) => {
+//   const userLastActiveTime = await rtdb.ref(`/session/${userId}`).get({
+//     lastActiveTime,
+//   });
 
-  return userLastActiveTime.val();
-};
+//   return userLastActiveTime.val();
+// };
 
-const setSession = async (session, firebaseUser) => {
-  const { uid, iat } = firebaseUser;
+// const setSession = async (session, firebaseUser) => {
+//   const { uid, iat } = firebaseUser;
 
-  if (_.isEmpty(session?.lastActiveTime.toString())) {
-    await rtdb.ref(`/session/${uid}`).set({
-      lastActiveTime: iat,
-    });
+//   if (_.isEmpty(session?.lastActiveTime.toString())) {
+//     await rtdb.ref(`/session/${uid}`).set({
+//       lastActiveTime: iat,
+//     });
 
-    return;
-  }
+//     return;
+//   }
 
-  console.log('session:', session);
-  const sessionTime = moment.unix(session.lastActiveTime).toDate();
-  const difference = moment().diff(moment(sessionTime), 'minutes');
-  console.log('difference:', difference);
+//   console.log('session:', session);
+//   const sessionTime = moment.unix(session.lastActiveTime).toDate();
+//   const difference = moment().diff(moment(sessionTime), 'minutes');
+//   console.log('difference:', difference);
 
-  // define the session expiry duration.
-  if (difference >= 30) {
-    await auth.revokeRefreshTokens(uid);
-    await rtdb.ref(`/session/${uid}`).set({
-      lastActiveTime: '',
-    });
-    throw responses.failure('Session is over. Please login again to continue!');
-  } else {
-    await rtdb.ref(`/session/${uid}`).set({
-      lastActiveTime: moment().unix(),
-    });
-  }
-};
+//   // define the session expiry duration.
+//   if (difference >= 30) {
+//     await auth.revokeRefreshTokens(uid);
+//     await rtdb.ref(`/session/${uid}`).set({
+//       lastActiveTime: '',
+//     });
+//     throw responses.failure('Session is over. Please login again to continue!');
+//   } else {
+//     await rtdb.ref(`/session/${uid}`).set({
+//       lastActiveTime: moment().unix(),
+//     });
+//   }
+// };
 
 const isLoggedIn = async (req, res, next) => {
   const bearerHeader = req.headers.authorization;
@@ -58,8 +58,8 @@ const isLoggedIn = async (req, res, next) => {
     const firebaseUser = await auth.verifyIdToken(bearerHeader);
     req.uid = firebaseUser.uid;
 
-    const session = await getSession(firebaseUser.uid, firebaseUser.exp);
-    await setSession(session, firebaseUser);
+    // const session = await getSession(firebaseUser.uid, firebaseUser.exp);
+    // await setSession(session, firebaseUser);
 
     if (!req.uid) {
       return res.status(401).send(
@@ -84,8 +84,8 @@ const isLoggedIn = async (req, res, next) => {
     req.user = {
       ...clonedUser.toJSON(),
       id: clonedUser._id.toString(),
-      countryCode: clonedUser.phone.countryCode,
-      phoneNumber: clonedUser.phone.phoneNumber,
+      countryCode: clonedUser.countryCode,
+      phoneNumber: clonedUser.phoneNumber,
     };
   } catch (e) {
     return res.status(500).send(responses.exception(e.message, e.code));
