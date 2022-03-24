@@ -4,7 +4,7 @@ const ProfileDTO = require('#dtos/profile.dtos');
 
 exports.getProfile = async (req, res, next) => {
   try {
-    const params = await asyncJoiValidate(req.params, ProfileDTO.getProfile);
+    const params = await asyncJoiValidate(req.query, ProfileDTO.getProfile);
     const response = await ProfileService.getProfile(params);
     return res.success(response);
   } catch (err) {
