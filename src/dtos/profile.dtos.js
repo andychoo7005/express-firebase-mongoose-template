@@ -10,7 +10,7 @@ const address = Joi.object({
 
 exports.updateProfile = Joi.object({
   // uid here refers to the firebase uid.
-  uid: Joi.string().required(),
+  // uid: Joi.string().required(),
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   email: Joi.string().email().required(),

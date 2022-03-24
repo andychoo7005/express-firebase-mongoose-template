@@ -10,7 +10,6 @@ const getSession = async (userId, lastActiveTime) => {
     lastActiveTime,
   });
 
-  console.log(userLastActiveTime.val());
   return userLastActiveTime.val();
 };
 

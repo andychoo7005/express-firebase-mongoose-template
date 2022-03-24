@@ -5,7 +5,7 @@ const ProfileDTO = require('#dtos/profile.dtos');
 exports.getProfile = async (req, res, next) => {
   try {
     const params = await asyncJoiValidate(req.query, ProfileDTO.getProfile);
-    const response = await ProfileService.getProfile(params);
+    const response = await ProfileService.getProfile(params, req.user);
     return res.success(response);
   } catch (err) {
     return next(err);
@@ -15,7 +15,7 @@ exports.getProfile = async (req, res, next) => {
 exports.updateProfile = async (req, res, next) => {
   try {
     const params = await asyncJoiValidate(req.body, ProfileDTO.updateProfile);
-    const response = await ProfileService.updateProfile(params, params.uid);
+    const response = await ProfileService.updateProfile(params, req.user);
     return res.success(response);
   } catch (err) {
     return next(err);
