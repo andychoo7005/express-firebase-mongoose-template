@@ -33,7 +33,7 @@ const getOrCreateFBUser = async (params) => {
   if (_.isEmpty(fbUser)) {
     return auth.createUser({
       email,
-      phoneNumber: countryCode + phoneNumber,
+      phoneNumber: `+${countryCode}${phoneNumber}`,
       password,
       displayName: `${firstName} ${lastName}`,
     });
