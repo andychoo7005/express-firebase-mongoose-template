@@ -9,6 +9,7 @@ const address = Joi.object({
 });
 
 exports.register = Joi.object({
+  uid: Joi.string().required(),
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   email: Joi.string().email().required(),
@@ -24,6 +25,7 @@ exports.forgotPassword = Joi.object({
 });
 
 exports.registerProfile = Joi.object({
+  uid: Joi.string().required(),
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   email: Joi.string().email().required(),

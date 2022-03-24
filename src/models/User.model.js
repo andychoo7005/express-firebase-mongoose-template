@@ -29,6 +29,10 @@ const AddressSchema = new Schema({
 });
 
 const UserSchema = new Schema({
+  uid: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     required: true,
