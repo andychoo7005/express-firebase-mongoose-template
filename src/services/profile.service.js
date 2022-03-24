@@ -1,7 +1,7 @@
 const User = require('#models/User.model');
 
-exports.getProfile = async (uid) => {
-  const updatedUser = await User.findOne({ uid });
+exports.getProfile = async (params) => {
+  const updatedUser = await User.findOne({ uid: params.uid });
 
   return updatedUser;
 };

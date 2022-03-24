@@ -11,8 +11,41 @@ const EmailManager = require('#helpers/emailManager');
 const { hostingUrl } = require('#config/env');
 const { auth } = require('#helpers/firebase');
 
+const firebaseFindUser = async (email) => {
+  try {
+    const user = await auth.getUserByEmail(email);
+    return user;
+  } catch (err) {
+    if (err.errorInfo.code === 'auth/user-not-found') {
+      return null;
+    }
+    throw err;
+  }
+};
+
+const getOrCreateFBUser = async (params) => {
+  const {
+    email, password, firstName, lastName, countryCode, phoneNumber,
+  } = params;
+
+  const fbUser = await firebaseFindUser(email);
+
+  if (_.isEmpty(fbUser)) {
+    return auth.createUser({
+      email,
+      phoneNumber: countryCode + phoneNumber,
+      password,
+      displayName: `${firstName} ${lastName}`,
+    });
+  }
+
+  return fbUser;
+};
+
 exports.register = async (params) => {
-  const { email, password } = params;
+  const {
+    email, password,
+  } = params;
 
   const user = await User.findOne({ email });
 
@@ -20,9 +53,15 @@ exports.register = async (params) => {
     throw responses.failure('This user is existed in the system. Please try another one', { isExisted: true });
   }
 
+  const firebaseUser = await getOrCreateFBUser(params);
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const finalParams = { ...params, password: hashedPassword };
+  const finalParams = {
+    ...params,
+    password: hashedPassword,
+    uid: firebaseUser.uid,
+  };
 
   const registeredUser = await User.create(finalParams);
 
