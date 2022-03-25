@@ -18,7 +18,6 @@ exports.updateProfile = Joi.object({
   address,
   dateOfBirth: Joi.date().iso(),
   countryCode: Joi.string().required(),
-  password: Joi.string().min(6).max(30).required(),
   avatar: Joi.string().base64(),
 });
 
