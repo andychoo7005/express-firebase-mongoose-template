@@ -6,6 +6,7 @@ admin.initializeApp({
   storageBucket: env.firebase.admin.storageBucket,
 });
 
+exports.admin = admin;
 exports.db = admin.firestore();
 exports.auth = admin.auth();
 exports.fbStorage = admin.storage();
