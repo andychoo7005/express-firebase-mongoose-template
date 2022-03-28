@@ -9,7 +9,7 @@ let databaseUsername = '';
 let databasePassword = '';
 let hostingUrl = '';
 let firebase = {};
-let mailgun = {}
+let mailgun = {};
 
 if (process.env.NODE_ENV === 'production') {
 // production info
@@ -22,12 +22,13 @@ if (process.env.NODE_ENV === 'production') {
   firebase = {
     admin: {
       credentials_filepath: path.resolve(process.env.FIREBASE_ADMIN_CREDENTIALS_FILENAME),
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     },
   };
   mailgun = {
-    domain:process.env.DOMAIN,
-    apikey:process.env.MAILGUN_API_KEY
-  }
+    domain: process.env.DOMAIN,
+    apikey: process.env.MAILGUN_API_KEY,
+  };
 }
 
 module.exports = {
@@ -38,5 +39,5 @@ module.exports = {
   databasePassword,
   hostingUrl,
   firebase,
-  mailgun
+  mailgun,
 };

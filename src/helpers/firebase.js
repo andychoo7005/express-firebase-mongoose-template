@@ -3,6 +3,7 @@ const env = require('#config/env');
 
 admin.initializeApp({
   credential: admin.credential.cert(env.firebase.admin.credentials_filepath),
+  storageBucket: env.firebase.admin.storageBucket,
 });
 
 exports.db = admin.firestore();
