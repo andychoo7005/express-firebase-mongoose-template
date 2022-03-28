@@ -10,7 +10,7 @@ const router = express.Router();
 router.post('/auth/register', authController.register);
 router.post('/auth/forgot-password', authController.forgotPassword);
 router.post('/auth/reset-password', authController.resetPassword);
-router.post('/auth/register-profile', isLoggedIn, authController.registerProfile);
+router.post('/auth/register-profile', authController.registerProfile);
 
 // profile controller
 router.get('/profile', isLoggedIn, profileController.getProfile);
