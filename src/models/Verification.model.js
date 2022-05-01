@@ -23,4 +23,4 @@ const verificationSchema = new Schema({
 
 verificationSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('verfication', verificationSchema);
+module.exports = mongoose.model('verification', verificationSchema);
