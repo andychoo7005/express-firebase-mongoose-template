@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === 'production') {
     admin: {
       credentials_filepath: path.resolve(process.env.FIREBASE_ADMIN_CREDENTIALS_FILENAME),
       storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      rtdb: process.env.FIREBASE_REALTIME_DATABASE,
     },
   };
   mailgun = {
