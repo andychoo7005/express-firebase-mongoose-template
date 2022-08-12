@@ -32,3 +32,20 @@ MUST INSTALL DEV DEPENDENCIES
 6. eslint-plugin-node
 7. nodemon
 ```
+
+Usage:
+```
+const expressApp = require('express-firebase-mongoose-template');
+const app = express();
+
+app.use('/',(req,res,next)=>{
+//controllers
+});
+
+app.post('/api-one',(req,res,next)=>{
+// post logic here.
+})
+
+// wrap your app with expressApp
+expressApp(app);
+```
