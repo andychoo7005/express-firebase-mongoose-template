@@ -33,6 +33,25 @@ MUST INSTALL DEV DEPENDENCIES
 7. nodemon
 ```
 
+Steps:
+1. Install packages above.
+2. Set env.
+```
+PORT=4000
+NODE_ENV=development
+
+#mongodb
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
+DATABASE_HOST=
+DATABASE_NAME=
+
+#firebase
+FIREBASE_ADMIN_CREDENTIALS_FILENAME=
+FIREBASE_STORAGE_BUCKET=
+FIREBASE_REALTIME_DATABASE=
+```
+
 Usage:
 ```
 const expressApp = require('express-firebase-mongoose-template');
