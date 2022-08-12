@@ -59,6 +59,7 @@ MAILGUN_API_KEY=
 Usage:
 ```
 const expressApp = require('express-firebase-mongoose-template');
+const express = require('express');
 const app = express();
 
 app.use('/',(req,res,next)=>{
