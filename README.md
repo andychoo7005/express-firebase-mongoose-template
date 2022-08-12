@@ -34,7 +34,7 @@ MUST INSTALL DEV DEPENDENCIES
 ```
 
 Usage:
-{
+```
 const expressApp = require('express-firebase-mongoose-template');
 const app = express();
 
@@ -48,4 +48,4 @@ app.post('/api-one',(req,res,next)=>{
 
 // wrap your app with expressApp
 expressApp(app);
-}
+```
