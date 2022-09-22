@@ -17,7 +17,7 @@
   },
   "main":"./src/app.js",
   "name":"express-firebase-mongoose-template",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "repository": {
     "type": "git",
     "url": "https://github.com/andychoo7005/express-firebase-mongoose-template.git"

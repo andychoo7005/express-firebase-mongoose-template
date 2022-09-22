@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
   databaseHost = process.env.DATABASE_HOST;
   databaseUsername = process.env.DATABASE_USERNAME;
   databasePassword = process.env.DATABASE_PASSWORD;
-  hostingUrl = 'http://localhost:4000';
+  hostingUrl = process.env.HOSTING_URL;
   firebase = {
     admin: {
       credentials_filepath: path.resolve(process.env.FIREBASE_ADMIN_CREDENTIALS_FILENAME),
