@@ -29,6 +29,7 @@ if (process.env.NODE_ENV === 'production') {
   mailgun = {
     domain: process.env.DOMAIN,
     apikey: process.env.MAILGUN_API_KEY,
+    sender: process.env.MAILGUN_SENDER,
   };
 }
 
