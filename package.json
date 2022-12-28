@@ -5,8 +5,8 @@
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "firebase-admin": "^10.0.2",
-    "helmet": "^5.0.2",
+    "firebase-admin": "^11.4.1",
+    "helmet": "^6.0.1",
     "joi": "^17.6.0",
     "lodash": "^4.17.21",
     "mailgun-js": "^0.22.0",
@@ -15,16 +15,12 @@
     "mongoose-unique-validator": "^3.0.0",
     "path": "^0.12.7"
   },
-  "main":"./src/app.js",
-  "name":"express-firebase-mongoose-template",
+  "main": "./src/index.js",
+  "name": "associate-backend",
   "version": "1.0.31",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/andychoo7005/express-firebase-mongoose-template.git"
-  },
   "scripts": {
-    "dev": "nodemon ./src/app.js",
-    "start": "node ./src/app.js"
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js"
   },
   "imports": {
     "#config/*": "./src/config/*.js",
